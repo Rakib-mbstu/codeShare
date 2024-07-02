@@ -7,8 +7,15 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 <f:view>
     <h:body>
-        <h:outputText id="id" value="#{codes.codeEntity.id}  ====  "/>
-        <h:outputText id="text" value="#{codes.codeEntity.codeText}"/>
+        <h:form>
+            <h:outputLabel value="Enter the link of the given" for="id"/>
+            <h:inputText id="id" value="#{codes.id}"/>
+            <h:commandButton id="submit"  value="Find" action="#{codes.read(codes.id)}">
+                <f:ajax execute="@form" render=":textbox"/>
+            </h:commandButton>
+        </h:form>
+        <h:outputText id="textbox" value="#{codes.codeEntity.codeText}"/>
+
     </h:body>
 </f:view>
 </html>

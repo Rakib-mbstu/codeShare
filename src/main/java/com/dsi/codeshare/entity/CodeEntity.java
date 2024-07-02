@@ -13,10 +13,10 @@ public class CodeEntity implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private long id;
     private @NotNull String codeText;
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 

@@ -4,18 +4,22 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 <f:view>
     <h:head>
-
+<!--        <h:outputStylesheet name="css/style.css"/>-->
+        <h:outputStylesheet library="webjars" name="primeflex/3.3.1/primeflex.min.css" />
     </h:head>
     <h:body>
-        <h1>Here's your favourite code editor!</h1>
-        <h:form>
-            <h:outputLabel value="write some code"/>
-            <h:inputTextarea value="#{codes.codeEntity.codeText}"/>
-            <h:commandButton value="Save" action="#{codes.submit}"/>
-        </h:form>
+      <div class="card ui-fluid">
+          <h1>Here's your favourite code editor!</h1>
+          <h:form>
+              <h:outputLabel value="write some code"/><br/>
+              <p:inputTextarea value="#{codes.codeEntity.codeText}" rows="10" cols="60" required="true" styleClass="text-red-400 bg-cyan-200 font-medium "/>
+              <h:commandButton value="Save" action="#{codes.submit}"/>
+          </h:form>
+      </div>
     </h:body>
 </f:view>
 </html>

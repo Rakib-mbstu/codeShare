@@ -13,19 +13,22 @@ import java.io.Serializable;
 
 
 @Named("codes")
-@SessionScoped
+@RequestScoped
 public class CodeController implements Serializable {
     private CodeEntity codeEntity = new CodeEntity();
+
+    private Long id = 0L;
+
 
     @Inject
     private CodeEntityService service;
 
-    public String submit() throws IOException {
+    public void submit() throws IOException {
         service.create(codeEntity);
-//        return "viewCode";
-//        FacesContext.getCurrentInstance().getExternalContext().dispatch("viewCode");
-        FacesContext.getCurrentInstance().getExternalContext().redirect("viewCode");
-        return "";
+        FacesContext.getCurrentInstance().getExternalContext().redirect("viewCode.xhtml");
+    }
+    public void read(long id) throws IOException {
+        codeEntity = service.read(id);
     }
     public CodeEntity setCodeEntity(CodeEntity codeEntity) {
         this.codeEntity = codeEntity;
@@ -34,5 +37,11 @@ public class CodeController implements Serializable {
     }
     public CodeEntity getCodeEntity() {
         return codeEntity;
+    }
+    public Long getId() {
+        return id;
+    }
+    public void setId(Long id) {
+        this.id = id;
     }
 }
